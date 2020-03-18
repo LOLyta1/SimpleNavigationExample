@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/inputDataFragment"
+    >
+
+    <fragment
+
+        android:id="@+id/inputDataFragment"
+        android:name="com.example.simplenavigation.InputDataFragment"
+        android:label="fragment_input_data"
+        tools:layout="@layout/fragment_input_data" >
+        <action
+
+            android:id="@+id/action_inputDataFragment_to_dataViewFragment"
+            app:destination="@id/myDialog"
+            app:popUpTo="@id/inputDataFragment" />
+        <argument
+            android:name="name"
+            android:defaultValue='"none"' />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dataViewFragment"
+        android:name="com.example.simplenavigation.DataViewFragment"
+        android:label="fragment_data_view"
+        tools:layout="@layout/fragment_data_view" >
+        <argument
+            android:name="name"
+            android:defaultValue='"none"' />
+    </fragment>
+    <dialog
+        android:id="@+id/myDialog"
+        android:name="com.example.simplenavigation.MyDialog"
+        android:label="fragment_my_dialog"
+        tools:layout="@layout/fragment_my_dialog" >
+        <action
+            android:id="@+id/action_myDialog_to_dataViewFragment"
+            app:destination="@id/dataViewFragment"
+            app:popUpTo="@id/inputDataFragment" />
+        <argument
+            android:name="name"
+            android:defaultValue='"none"' />
+    </dialog>
+
+</navigation>

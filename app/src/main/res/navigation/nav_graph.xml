@@ -3,39 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/inputDataFragment"
-    >
+
+    app:startDestination="@id/payment_navigation">
 
     <fragment
-
         android:id="@+id/inputDataFragment"
         android:name="com.example.simplenavigation.InputDataFragment"
         android:label="fragment_input_data"
-        tools:layout="@layout/fragment_input_data" >
+        tools:layout="@layout/fragment_input_data">
         <action
 
             android:id="@+id/action_inputDataFragment_to_dataViewFragment"
             app:destination="@id/myDialog"
             app:popUpTo="@id/inputDataFragment" />
         <argument
-            android:name="name"
-            android:defaultValue='"none"' />
+            android:name="count"
+            app:argType="integer" />
     </fragment>
 
     <fragment
         android:id="@+id/dataViewFragment"
         android:name="com.example.simplenavigation.DataViewFragment"
         android:label="fragment_data_view"
-        tools:layout="@layout/fragment_data_view" >
+        tools:layout="@layout/fragment_data_view">
         <argument
             android:name="name"
             android:defaultValue='"none"' />
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <dialog
         android:id="@+id/myDialog"
         android:name="com.example.simplenavigation.MyDialog"
         android:label="fragment_my_dialog"
-        tools:layout="@layout/fragment_my_dialog" >
+        tools:layout="@layout/fragment_my_dialog">
         <action
             android:id="@+id/action_myDialog_to_dataViewFragment"
             app:destination="@id/dataViewFragment"
@@ -43,9 +46,44 @@
         <argument
             android:name="name"
             android:defaultValue='"none"' />
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
     </dialog>
 
-    <action android:id="@+id/action_global_myDialog" app:destination="@id/myDialog"/>
-    <action android:id="@+id/action_global_dataViewFragment" app:destination="@id/dataViewFragment"/>
+    <action
+        android:id="@+id/action_global_myDialog"
+        app:destination="@id/myDialog" />
+    <action
+        android:id="@+id/action_global_dataViewFragment"
+        app:destination="@id/dataViewFragment" />
+
+    <navigation
+        android:id="@+id/payment_navigation"
+        app:startDestination="@id/nestedFragmentOne2">
+        <fragment
+            android:id="@+id/nestedFragmentOne2"
+            android:name="com.example.simplenavigation.NestedFragmentOne"
+            android:label="fragment_nested_one"
+            tools:layout="@layout/fragment_nested_one">
+            <action
+                android:id="@+id/action_nestedFragmentOne2_to_nestedFragmentTwo2"
+                app:destination="@id/nestedFragmentTwo2" />
+        </fragment>
+        <fragment
+            android:id="@+id/nestedFragmentTwo2"
+            android:name="com.example.simplenavigation.NestedFragmentTwo"
+            android:label="fragment_nested_two"
+            tools:layout="@layout/fragment_nested_two">
+            <argument
+                android:name="value"
+                android:defaultValue="0"
+                app:argType="integer" />
+            <action
+                android:id="@+id/action_nestedFragmentTwo2_to_inputDataFragment"
+                app:destination="@id/inputDataFragment" />
+        </fragment>
+    </navigation>
 
 </navigation>

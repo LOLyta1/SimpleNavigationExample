@@ -1,16 +1,12 @@
 package com.example.simplenavigation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import kotlinx.android.synthetic.main.fragment_data_view.*
 import kotlinx.android.synthetic.main.fragment_data_view.view.*
-import kotlinx.android.synthetic.main.fragment_input_data.*
-import kotlinx.android.synthetic.main.fragment_input_data.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,23 +19,20 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DataViewFragment : Fragment() {
-    val args: InputDataFragmentArgs by navArgs()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    val args: MyDialogArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_data_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.data_text_view.setText(args.name)
+        val text = "name - ${args.name} ; count - ${args.count}"
+        view.data_text_view.text = text
+
     }
 
 }

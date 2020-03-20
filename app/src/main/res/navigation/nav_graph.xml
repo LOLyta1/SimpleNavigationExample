@@ -12,13 +12,15 @@
         android:label="fragment_input_data"
         tools:layout="@layout/fragment_input_data">
         <action
-
             android:id="@+id/action_inputDataFragment_to_dataViewFragment"
             app:destination="@id/myDialog"
             app:popUpTo="@id/inputDataFragment" />
         <argument
             android:name="count"
             app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="app://com.example.simplenavigation/inputDataFragment/{count}"/>
     </fragment>
 
     <fragment
@@ -52,12 +54,6 @@
             app:argType="integer" />
     </dialog>
 
-    <action
-        android:id="@+id/action_global_myDialog"
-        app:destination="@id/myDialog" />
-    <action
-        android:id="@+id/action_global_dataViewFragment"
-        app:destination="@id/dataViewFragment" />
 
     <navigation
         android:id="@+id/payment_navigation"

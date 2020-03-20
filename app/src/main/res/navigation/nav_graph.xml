@@ -65,7 +65,11 @@
             tools:layout="@layout/fragment_nested_one">
             <action
                 android:id="@+id/action_nestedFragmentOne2_to_nestedFragmentTwo2"
-                app:destination="@id/nestedFragmentTwo2" />
+                app:destination="@id/nestedFragmentTwo2"
+                app:enterAnim="@android:anim/slide_out_right"
+                app:exitAnim="@android:anim/slide_in_left"
+                app:popEnterAnim="@android:anim/slide_out_right"
+                app:popExitAnim="@android:anim/slide_in_left" />
         </fragment>
         <fragment
             android:id="@+id/nestedFragmentTwo2"
@@ -78,7 +82,8 @@
                 app:argType="integer" />
             <action
                 android:id="@+id/action_nestedFragmentTwo2_to_inputDataFragment"
-                app:destination="@id/inputDataFragment" />
+                app:destination="@id/inputDataFragment"
+                />
         </fragment>
     </navigation>
 
